@@ -2,7 +2,7 @@
 
 ## What we will cover?
 
-###1. Async / await
+### 1. Async / await
 ```js
 async function foo() {
  const result = await axios.get("https://dube.io/service/ping");
