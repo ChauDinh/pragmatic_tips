@@ -1,0 +1,23 @@
+{
+  "name": "pragmatic_tips",
+  "version": "1.0.0",
+  "description": "Note: `The project is my note about JS I collected on books and the internet.`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChauDinh/pragmatic_tips.git"
+  },
+  "author": "Chau Dinh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChauDinh/pragmatic_tips/issues"
+  },
+  "homepage": "https://github.com/ChauDinh/pragmatic_tips#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "axios": "^0.18.0"
+  }
+}

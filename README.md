@@ -1,5 +1,7 @@
 # Some tips for JavaScript developers in 2019
 
+Note: `The project is my note about JS I collected on books and the internet.`
+
 ## What we will cover?
 
 ### 1. Async / await
@@ -13,4 +15,68 @@ async function foo() {
 }
 
 foo();
+```
+
+- Async(Asynchronous) is that when something is going on we don't want to wait until the thing is done to continue the program. This technique is usually used when we make requests to server/API, which can take a couple of seconds to get data back.
+
+The code above is just an example. Check my [async/await](https://github.com/ChauDinh/async_await/blob/master/async_await.js) repository or [JavaScript.info](https://javascript.info/async-await) for more.
+
+### 2. async control flow
+
+```js
+import axios from "axios";
+
+let data = [
+ { id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }
+];
+
+async function fetchData(dataSet) {
+ for (entry of dataSet) {
+  const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`);
+  const newData = result.data;
+  updateData(newData);
+
+  console.log(data);
+ }
+}
+
+function updateData(newData) {
+ data = data.map(el => {
+  if (el.id === newData.id) return newData
+  return el;
+ })
+}
+
+fetchData(data);
+```
+### 3. Promise.all
+
+What if we want to fetch all of the data in paralell? Since we can await all of Promises, simply use `Promise.all()`.
+
+```js
+import axios from "axios";
+
+let data = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
+
+async function fetchData(dataSet) {
+ const pokemonPromises = dataSet.map(entry => {
+  return axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`);
+ })
+ const results = await Promise.all(pokemonPromises);
+
+ results.forEach(result => {
+  updateData(result.data);
+ })
+
+ console.log(data);
+}
+
+function updateData(newData) {
+ data = data.map(e => {
+  if (e.id === newData.id) return newData
+  return e;
+ })
+}
+
+fetchData(data);
 ```
