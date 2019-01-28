@@ -23,6 +23,8 @@ The code above is just an example. Check my [async/await](https://github.com/Cha
 
 ### 2. async control flow
 
+#### for...of
+
 ```js
 import axios from "axios";
 
@@ -49,7 +51,7 @@ function updateData(newData) {
 
 fetchData(data);
 ```
-### 3. Promise.all
+#### Promise.all
 
 What if we want to fetch all of the data in paralell? Since we can await all of Promises, simply use `Promise.all()`.
 
@@ -79,4 +81,23 @@ function updateData(newData) {
 }
 
 fetchData(data);
+```
+Note: `for...of` and `Promise.all` are introduced in ES6+, so make sure to transpile the code. 
+
+### 3. Destructuring & default values
+
+Let's concern the code in the previous section
+
+```js
+const result = axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`);
+
+const data = result.data;
+```
+There is an easier way, also introduced with ES6, to do that. Actually we can use destructuring to just take one or some values from an object/array. 
+
+```js
+const { data } = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`);
+
+// we can rename the variable
+const { data: newData } = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`);
 ```
