@@ -129,3 +129,86 @@ console.log(calculate()); // 3
 console.log(calculate({ type: "division" })); // 0.5
 console.log(calculate({ operands: [2, 3, 4], type: "multiplication" })) // 24
 ```
+### 4. Truthy and falsy values
+
+Truthy and falsy values will improve our code and save us a couple of instructions, making it more eloquent. 
+
+```js
+if (myBool) { // instead myBool === true
+  console.log(...);
+}
+
+if (myString) { // instead myString.length > 0
+  console.log(...);
+}
+
+if (!myNumber) { // instead isNaN(myNumber)
+  console.log(...);
+}
+```
+Here are what truthy and falsy values are:
+
+#### Falsy
+
+* strings with the length of 0
+* the number 0
+* false
+* undefined
+* null
+* NaN
+
+#### Truthy
+
+* empty arrays
+* empty objects
+* Everything else
+
+Note: There is a bug in certain situations, cause when checking truthy/falsy values, there is no explicit comparisons `(checking with double signs == instead three ===)`. The bug occur mostly with the number 0.
+
+### 5. Logical and ternary operators
+
+There are shorten our code. 
+
+#### Logical operators
+
+There are two logical operators and will return either `true`, `false` or the matching value and are represented by `&&` and `||`.
+
+* "and" - `&&`: The first falsy value gets returned. If there is none, the last truthy value is being returned.
+* "or" - `||`: The first truthy value gets returned. If there is none, the last falsy value is being returned.
+
+#### Ternary operators
+
+Teh ternary operator has three parts:
+
+* The comparision, which will return either falsy or truthy
+* First return value, in case the comparision is truthy
+* Second return value, in case teh comparision is falsy
+
+```js
+const lang = "German";
+
+console.log(lang === "German" ? "Hallo" : "Xin Chao"); // Hallo
+console.log(lang ? "Ja" : "Yes") // Ja
+console.log(lang === "French" ? "Bon sir" : "Good evening") // Good evening
+```
+
+### 6. Optional chaining
+
+Let's concern the code
+```js
+let data;
+
+if (myObj && myObj.firstProp && myObj.firstProp.secondProp && myObj.firstProp.secondProp.actualData) {
+  data = myObj.firstProp.secondProp.actualData;
+}
+```
+It is tedious, and there is a better way
+
+```js
+const data = myObj?.firstProp?.secondProp?.actualData
+```
+It's called optional chaining and it is an eloquent way of checking nested properties. 
+
+### 7. Classs properties & binding
+
+Binding functions
